@@ -50,12 +50,12 @@ Between w\_2024\_16 (the source for pipelines version 27) and w\_2024\_42 (v28 s
 
 Additional new features in this release include:
 \begin{itemize}
-    \item Compensated tophats for photoCalib (DM-38632), used in CalibrateImageTask (DM-44908).
-    \item DM-44130 change default S/N cut for PSF star selection from 20 to 50.
-    \item DM-44305 Implement Gaussian Process interpolation of bad pixels.
+    \item The use of ``compensated tophats'' to measure fluxes used in photometric calibration \href{https://rubinobs.atlassian.net/browse/DM-38632}{(DM-38632)}, which are applied in CalibrateImageTask \href{https://rubinobs.atlassian.net/browse/DM-44908}{(DM-44908)}.
+    \item The default signal-to-noise cut for PSF star selection was increased from 20 to 50 \href{https://rubinobs.atlassian.net/browse/DM-44130}{(DM-44130)}.
+    \item Interpolation of bad pixels is now done via a Gaussian Process algorithm \href{https://rubinobs.atlassian.net/browse/DM-44305}{(DM-44305)}.
 \end{itemize}
 
-Photometry and astrometry metrics reported here were calculated using the \href{https://github.com/lsst/analysis_tools}{analysis\_tools} package, which is part of the standard pipeline distribution. The \texttt{analysis\_tools} package builds on and supersedes \href{https://github.com/lsst/faro}{faro} (\citeds{DMTN-211}), which has been used for the past few years. The calculation of most metrics reported in this Report is unchanged between the two packages, though minor differences are to be expected because of fundamental differences in the underlying data-handling frameworks. We are actively working on a revised definition of the residual ellipticity correlation metrics TE1 and TE2, to be implemented in \texttt{analysis\_tools}. Because this work is still in progress, the ellipticity metrics reported here are calculated by \texttt{faro} in the same manner as previous versions of the Characterization Metric Report.
+Photometry and astrometry metrics reported here were calculated using the \href{https://github.com/lsst/analysis_tools}{analysis\_tools} package, which is part of the standard pipeline distribution. The \texttt{analysis\_tools} package builds on and supersedes \href{https://github.com/lsst/faro}{faro} (\citeds{DMTN-211}), which has been used for the past few years. The calculation of most metrics reported in this Report is unchanged between the two packages, though minor differences in how selection criteria are applied, or how catalog matching is done, between \texttt{analysis\_tools} and \texttt{faro} could result in small differences in the resulting metrics. We are actively working on a revised definition of the residual ellipticity correlation metrics TE1 and TE2, to be implemented in \texttt{analysis\_tools}. Because this work is still in progress, the ellipticity metrics reported here are calculated by \texttt{faro} in the same manner as previous versions of the Characterization Metric Report.
 
 The metric calculation pipelines from \texttt{analysis\_tools} were run on the three RC2 tracts to derive the photometry and astrometry metrics, and \texttt{faro} to calculate the shape metrics that are reported here. We exclude the two astrometry metrics (AM3 and AF3) that concern residuals on 200-arcminute scales, since the individual tracts of RC2 do not span large enough spatial scales to enable these measurements.
 
